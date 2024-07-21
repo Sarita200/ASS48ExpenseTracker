@@ -19,8 +19,12 @@ const transactionSchema =new Schema({
     },
     user:{
         type :Schema.Types.ObjectId,
-        ref : "User,"
+        ref : "User,",
+        require: true
     }
+},
+{
+    timestamps :true
 });
 
 const Transaction = model("Transaction",transactionSchema);
