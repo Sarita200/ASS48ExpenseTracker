@@ -1,8 +1,39 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './SignUp.css'
+import axios from "axios"
+import toast  from "react-hot-toast"
+import { Toaster } from 'react-hot-toast'
+
+
 
 function SignUp() {
-  return (
+
+  const [user , setUser ] =useState({
+    fullName : '',
+    email :'',
+    password: '',
+    dob: ''
+  })
+
+  const signup = async () =>{
+    const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/signup`,{
+      fullName: user.fullName,
+      email : user.email,
+      password : user.password,
+      dob : user.dob
+    })
+
+    if(response.data.success){
+        toast.success(response.data.message)
+    }
+    else{
+      toast.success(response.data.message)
+    }
+    console.log(response)
+    
+  }
+
+   return (
     <div>
       <h1 className='title'> User Registration</h1>
 
@@ -11,28 +42,43 @@ function SignUp() {
           type='text'
           placeholder='Full Name'
           className='userInput'
+          value={user.fullName}
+          onChange={(e) => {setUser({...user, fullName: e.target.value})}}
         />
 
         <input
           type='email'
           placeholder='Email'
           className='userInput'
+          value={user.email}
+          onChange={(e) => {setUser({...user, email: e.target.value})}}
         />
 
         <input
           type='password'
           placeholder='Password'
           className='userInput'
+          value={user.password}
+          onChange={(e) => {setUser({...user, password: e.target.value})}}
         />
 
         <input
           type='Date'
           placeholder='Date of Birth'
           className='userInput'
+          value={user.dob}
+          onChange={(e) => {setUser({...user, dob: e.target.value})}}
         />
 
-        <button type='button' className='btnAuth'>Register</button>
+        <button 
+        type='button' 
+        className='btnAuth'
+        onClick={signup}
+        >
+          Register
+          </button>
       </form>
+      <Toaster/>
     </div>
   )
 }

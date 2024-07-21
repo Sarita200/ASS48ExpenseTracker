@@ -4,7 +4,7 @@ import './Login.css'
 function Login() {
   return (
     <div>
-        <h1 className='title'> User Registration</h1>
+        <h1 className='title'> User Login</h1>
 
         <form className='signUpForm'>
 
@@ -19,7 +19,7 @@ function Login() {
           placeholder='Password'
           className='userInput'
         />
-        
+
         <button type='button' className='btnAuth'>Login</button>
       </form>
     </div>
