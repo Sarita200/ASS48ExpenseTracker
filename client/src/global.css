@@ -11,7 +11,13 @@
     cursor: pointer;
     padding: 6px;
     color: white;
+    margin: auto 120px;
 }
 .btnAuth:hover{
     background-color: #0056b3;
+}
+.title{
+    text-align: center;
+    margin: 10px auto;
+    font-size: 40px;
 }

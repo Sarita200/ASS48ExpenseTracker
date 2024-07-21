@@ -4,7 +4,24 @@ import './Login.css'
 function Login() {
   return (
     <div>
-         <h1>Login</h1>
+        <h1 className='title'> User Registration</h1>
+
+        <form className='signUpForm'>
+
+        <input
+          type='email'
+          placeholder='Email'
+          className='userInput'
+        />
+
+        <input
+          type='password'
+          placeholder='Password'
+          className='userInput'
+        />
+        
+        <button type='button' className='btnAuth'>Login</button>
+      </form>
     </div>
   )
 }
