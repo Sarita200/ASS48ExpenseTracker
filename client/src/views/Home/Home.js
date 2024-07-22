@@ -5,6 +5,7 @@ import axios from 'axios'
 import TransactionCard from '../../components/TransactionCard/TransactionCard'
 
 import ImgAdd from "./add.png"
+import { Link } from 'react-router-dom'
 
 function Home() {
   const [user, setUser] = useState(' ')
@@ -126,12 +127,12 @@ function Home() {
           })
         }
       </div>
-      <img src={ImgAdd}
-      alt='Add Transaction'
-      className='AddTransaction'
-      onClick={() => {
-
-      }}/>
+      <Link to='/add-transaction' className='add-transaction-Link'>
+        <img src={ImgAdd}
+          alt='Add Transaction'
+          className='AddTransaction'
+        />
+      </Link>
       <Toaster />
     </div>
   )

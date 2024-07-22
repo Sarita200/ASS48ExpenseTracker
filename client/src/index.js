@@ -6,6 +6,7 @@ import './global.css'
 import Home from "./views/Home/Home"
 import SignUp from "./views/SignUp/SignUp"
 import Login from "./views/Login/Login"
+import AddTransaction from './views/AddTransaction/AddTransaction';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -22,6 +23,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
   {
     path :'/login',
     element : <Login/>
+  },
+  {
+    path :'/add-transaction',
+    element : <AddTransaction/>
   },
   {
     path :'*',
