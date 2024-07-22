@@ -6,8 +6,9 @@ import TransactionCard from '../../components/TransactionCard/TransactionCard'
 
 function Home() {  
   const [user ,setUser] = useState(' ')
-
   const [ transactions , setTransactions ] = useState([])
+  const [ netIncome , setNetIncome] = useState(0)
+  const [ netExpense , setNetExpense] = useState(0)
 
   useEffect(() =>{
     const currentUser = JSON.parse(localStorage.getItem('currentUser'))
@@ -30,14 +31,31 @@ function Home() {
     toast.loading('Loading Transaction...')
 
     const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/transactions?userId=${user._id}`)
-    
+    const allTransactions = response.data.data
     toast.dismiss()
-    setTransactions(response.data.data)
+    setTransactions(allTransactions)
   }
 
   useEffect(() =>{
     loadTransactions()
   }, [user])
+
+  useEffect(() =>{
+    let income = 0
+    let expense = 0
+
+    transactions.forEach((transaction) => {
+      if(transaction.type === 'credit') {
+        income += transaction.amount
+      }
+      else{
+        expense += transaction.amount
+      }
+    })
+
+    setNetIncome(income)
+    setNetExpense(expense)
+  }, [transactions])
 
   return (
     <div>
@@ -61,26 +79,26 @@ function Home() {
         <div className='netTransactionvalue'>
           <div className='netTransactionItem'>
               <span className='net-transaction-value-amount'>
-                + totalCreditAmount
+                + {netIncome}
               </span>
               <span className='net-transaction-value-title'>
-                Total Credit Amount
+               Net Income
               </span>
           </div>
           <div className='netTransactionItem'>
               <span className='net-transaction-value-amount'>
-                + totalCreditAmount
+                - {netExpense}
               </span>
               <span className='net-transaction-value-title'>
-                Total Credit Amount
+                Net Expense
               </span>
           </div>
           <div className='netTransactionItem'>
               <span className='net-transaction-value-amount'>
-                + totalCreditAmount
+                 { netIncome - netExpense}
               </span>
               <span className='net-transaction-value-title'>
-                Total Credit Amount
+                Net Balance
               </span>
           </div>          
           
@@ -88,6 +106,7 @@ function Home() {
 
         {
           transactions.map( (transaction) => {
+            
             const {_id , title, amount, category, type, createdAt} = transaction
 
             return (<TransactionCard
