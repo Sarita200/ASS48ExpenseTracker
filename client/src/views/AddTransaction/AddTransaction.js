@@ -79,6 +79,7 @@ function AddTransaction() {
                     <option value='clothing'>Clothing</option>
                     <option value='health'>Health</option>
                     <option value='salary'>Salary</option>
+                    <option value='pocket-money'>Pocket Money</option>
                 </select>
 
                 <button 

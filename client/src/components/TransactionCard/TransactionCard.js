@@ -20,6 +20,8 @@ function TransactionCard({_id , title , amount , category ,type , createdAt}) {
         {type === "credit" ? "+": "-"}
         {amount}
       </span>
+
+      
     </div>
   )
 }
