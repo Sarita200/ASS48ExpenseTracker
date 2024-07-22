@@ -58,6 +58,8 @@ function Home() {
           Logout
         </span>
 
+        
+
         {
           transactions.map( (transaction) => {
             const {_id , title, amount, category, type, createdAt} = transaction

@@ -9,7 +9,20 @@
 .TransactionCardTitle{
     margin: 0 ;
 }
-
+.TransactionCardDate{
+    font-size: 10px;
+}
+.TransactionCardCategory{
+    font-size: 12px;
+    background-color: #0084ff;
+    color: #ffff;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 20px;
+    padding: 3px 15px;
+    border: none;
+}
 .TransactionCardAmount{
     position: absolute;
     right: 10px;
