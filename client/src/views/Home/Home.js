@@ -20,7 +20,7 @@ function Home() {
     }
   }, [])
 
-  const loadTransaction = async () =>{
+  const loadTransactions = async () =>{
 
     if(!user._id){
       return
@@ -32,12 +32,11 @@ function Home() {
     
     toast.dismiss()
     setTransactions(response.data.data)
-
-    useEffect(() =>{
-      loadTransaction()
-    }, [user])
-
   }
+
+  useEffect(() =>{
+    loadTransactions()
+  }, [user])
 
   return (
     <div>
