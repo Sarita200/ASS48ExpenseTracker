@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import './Home.css'
-import toast from "react-hot-toast"
+import toast, { Toaster } from "react-hot-toast"
 import axios from 'axios'
+import TransactionCard from '../../components/TransactionCard/TransactionCard'
 
 function Home() {  
   const [user ,setUser] = useState(' ')
 
-  const [ transaction , setTransactions ] = useState([])
+  const [ transactions , setTransactions ] = useState([])
 
   useEffect(() =>{
     const currentUser = JSON.parse(localStorage.getItem('currentUser'))
@@ -28,7 +29,7 @@ function Home() {
 
     toast.loading('Loading Transaction...')
 
-    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/login}/transactions?userId=${user._id}`)
+    const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/transactions?userId=${user._id}`)
     
     toast.dismiss()
     setTransactions(response.data.data)
@@ -48,10 +49,33 @@ function Home() {
         onClick={() =>{
           localStorage.clear()
           toast.success(`Logged out successfully..`)
+
+          setTimeout(() =>{
+            window.location.href = '/login'
+          })
         }}
         >
           Logout
         </span>
+
+        {
+          transactions.map( (transaction) => {
+            const {_id , title, amount, category, type, createdAt} = transaction
+
+            return (<TransactionCard
+              Key={_id}
+              _id={_id}
+              title={title}
+              amount={amount}
+              category={category}
+              type={type}
+              createdAt={createdAt}
+              loadTransactions={loadTransactions}
+              />
+            )
+          })
+        }
+        <Toaster/>
     </div>
   )
 }
