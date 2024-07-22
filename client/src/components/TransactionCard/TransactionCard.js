@@ -6,7 +6,9 @@ function TransactionCard({_id , title , amount , category ,type , createdAt}) {
     <div className='TransactionCard'>
       <h1 className='TransactionCardTitle'>{title}</h1>
 
-      <span className='TransactionCardAmount'>
+      <span className='TransactionCardAmount' style={{
+        color: type === "credit" ? "green":"red"
+      }}>
         {type === "credit" ? "+": "-"}
         {amount}
       </span>
