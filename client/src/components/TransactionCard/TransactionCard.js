@@ -5,6 +5,11 @@ function TransactionCard({_id , title , amount , category ,type , createdAt}) {
   return (
     <div className='TransactionCard'>
       <h1 className='TransactionCardTitle'>{title}</h1>
+
+      <span className='TransactionCardAmount'>
+        {type === "credit" ? "+": "-"}
+        {amount}
+      </span>
     </div>
   )
 }
