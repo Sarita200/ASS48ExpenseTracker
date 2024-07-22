@@ -1,0 +1,7 @@
+.homeLogout{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 12px;
+}

@@ -1,39 +1,41 @@
 import React, { useState } from 'react'
 import './SignUp.css'
 import axios from "axios"
-import toast  from "react-hot-toast"
+import toast from "react-hot-toast"
 import { Toaster } from 'react-hot-toast'
+import { Link } from 'react-router-dom'
+
 
 
 
 function SignUp() {
 
-  const [user , setUser ] =useState({
-    fullName : '',
-    email :'',
+  const [user, setUser] = useState({
+    fullName: '',
+    email: '',
     password: '',
     dob: ''
   })
 
-  const signup = async () =>{
-    const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/signup`,{
+  const signup = async () => {
+    const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/signup`, {
       fullName: user.fullName,
-      email : user.email,
-      password : user.password,
-      dob : user.dob
+      email: user.email,
+      password: user.password,
+      dob: user.dob
     })
 
-    if(response.data.success){
-        toast.success(response.data.message)
+    if (response.data.success) {
+      toast.success(response.data.message)
     }
-    else{
+    else {
       toast.success(response.data.message)
     }
     console.log(response)
-    
+
   }
 
-   return (
+  return (
     <div>
       <h1 className='title'> User Registration</h1>
 
@@ -43,7 +45,7 @@ function SignUp() {
           placeholder='Full Name'
           className='userInput'
           value={user.fullName}
-          onChange={(e) => {setUser({...user, fullName: e.target.value})}}
+          onChange={(e) => { setUser({ ...user, fullName: e.target.value }) }}
         />
 
         <input
@@ -51,7 +53,7 @@ function SignUp() {
           placeholder='Email'
           className='userInput'
           value={user.email}
-          onChange={(e) => {setUser({...user, email: e.target.value})}}
+          onChange={(e) => { setUser({ ...user, email: e.target.value }) }}
         />
 
         <input
@@ -59,7 +61,7 @@ function SignUp() {
           placeholder='Password'
           className='userInput'
           value={user.password}
-          onChange={(e) => {setUser({...user, password: e.target.value})}}
+          onChange={(e) => { setUser({ ...user, password: e.target.value }) }}
         />
 
         <input
@@ -67,18 +69,20 @@ function SignUp() {
           placeholder='Date of Birth'
           className='userInput'
           value={user.dob}
-          onChange={(e) => {setUser({...user, dob: e.target.value})}}
+          onChange={(e) => { setUser({ ...user, dob: e.target.value }) }}
         />
 
-        <button 
-        type='button' 
-        className='btnAuth'
-        onClick={signup}
+        <button
+          type='button'
+          className='btnAuth'
+          onClick={signup}
         >
           Register
-          </button>
+        </button>
+
+        <Link to='/login'>Already have an account ? Login</Link>
       </form>
-      <Toaster/>
+      <Toaster />
     </div>
   )
 }

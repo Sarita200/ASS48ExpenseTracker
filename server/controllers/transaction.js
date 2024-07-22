@@ -43,7 +43,7 @@ const getTransaction = async(req,res) =>{
         })
     }
 
-const transactions = await Transaction.findOne({user : userId })
+const transactions = await Transaction.find({user : userId })
 
 res.json({
     success :true,
