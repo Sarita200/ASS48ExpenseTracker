@@ -4,6 +4,8 @@ import toast, { Toaster } from "react-hot-toast"
 import axios from 'axios'
 import TransactionCard from '../../components/TransactionCard/TransactionCard'
 
+import ImgAdd from "./add.png"
+
 function Home() {
   const [user, setUser] = useState(' ')
   const [transactions, setTransactions] = useState([])
@@ -124,6 +126,12 @@ function Home() {
           })
         }
       </div>
+      <img src={ImgAdd}
+      alt='Add Transaction'
+      className='AddTransaction'
+      onClick={() => {
+
+      }}/>
       <Toaster />
     </div>
   )
