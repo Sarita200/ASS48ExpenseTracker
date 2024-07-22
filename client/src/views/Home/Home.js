@@ -4,27 +4,27 @@ import toast, { Toaster } from "react-hot-toast"
 import axios from 'axios'
 import TransactionCard from '../../components/TransactionCard/TransactionCard'
 
-function Home() {  
-  const [user ,setUser] = useState(' ')
-  const [ transactions , setTransactions ] = useState([])
-  const [ netIncome , setNetIncome] = useState(0)
-  const [ netExpense , setNetExpense] = useState(0)
+function Home() {
+  const [user, setUser] = useState(' ')
+  const [transactions, setTransactions] = useState([])
+  const [netIncome, setNetIncome] = useState(0)
+  const [netExpense, setNetExpense] = useState(0)
 
-  useEffect(() =>{
+  useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'))
 
-    if(currentUser){
+    if (currentUser) {
       setUser(currentUser)
     }
 
-    if(!currentUser){
+    if (!currentUser) {
       window.location.href = '/login'
     }
   }, [])
 
-  const loadTransactions = async () =>{
+  const loadTransactions = async () => {
 
-    if(!user._id){
+    if (!user._id) {
       return
     }
 
@@ -36,19 +36,19 @@ function Home() {
     setTransactions(allTransactions)
   }
 
-  useEffect(() =>{
+  useEffect(() => {
     loadTransactions()
   }, [user])
 
-  useEffect(() =>{
+  useEffect(() => {
     let income = 0
     let expense = 0
 
     transactions.forEach((transaction) => {
-      if(transaction.type === 'credit') {
+      if (transaction.type === 'credit') {
         income += transaction.amount
       }
-      else{
+      else {
         expense += transaction.amount
       }
     })
@@ -60,54 +60,55 @@ function Home() {
   return (
     <div>
       <h1 className='greeting'>Hello {user.fullName}</h1>
-        <h2 className='heading'>Welcome To Expense Tracker</h2>
+      <h2 className='heading'>Welcome To Expense Tracker</h2>
 
-        <span 
+      <span
         className='homeLogout'
-        onClick={() =>{
+        onClick={() => {
           localStorage.clear()
           toast.success(`Logged out successfully..`)
 
-          setTimeout(() =>{
+          setTimeout(() => {
             window.location.href = '/login'
           })
         }}
-        >
-          Logout
-        </span>
+      >
+        Logout
+      </span>
 
-        <div className='netTransactionvalue'>
-          <div className='netTransactionItem'>
-              <span className='net-transaction-value-amount'>
-                + {netIncome}
-              </span>
-              <span className='net-transaction-value-title'>
-               Net Income
-              </span>
-          </div>
-          <div className='netTransactionItem'>
-              <span className='net-transaction-value-amount'>
-                - {netExpense}
-              </span>
-              <span className='net-transaction-value-title'>
-                Net Expense
-              </span>
-          </div>
-          <div className='netTransactionItem'>
-              <span className='net-transaction-value-amount'>
-                 { netIncome - netExpense}
-              </span>
-              <span className='net-transaction-value-title'>
-                Net Balance
-              </span>
-          </div>          
-          
+      <div className='netTransactionvalue'>
+        <div className='netTransactionItem'>
+          <span className='net-transaction-value-amount'>
+            + {netIncome}
+          </span>
+          <span className='net-transaction-value-title'>
+            Net Income
+          </span>
+        </div>
+        <div className='netTransactionItem'>
+          <span className='net-transaction-value-amount'>
+            - {netExpense}
+          </span>
+          <span className='net-transaction-value-title'>
+            Net Expense
+          </span>
+        </div>
+        <div className='netTransactionItem'>
+          <span className='net-transaction-value-amount'>
+            {netIncome - netExpense}
+          </span>
+          <span className='net-transaction-value-title'>
+            Net Balance
+          </span>
         </div>
 
+      </div>
+
+      <div className='transactionsContainer'>
         {
-          transactions.map( (transaction) => {
-            
-            const {_id , title, amount, category, type, createdAt} = transaction
+          transactions.map((transaction) => {
+
+            const { _id, title, amount, category, type, createdAt } = transaction
 
             return (<TransactionCard
               Key={_id}
@@ -118,11 +119,12 @@ function Home() {
               type={type}
               createdAt={createdAt}
               loadTransactions={loadTransactions}
-              />
+            />
             )
           })
         }
-        <Toaster/>
+      </div>
+      <Toaster />
     </div>
   )
 }
