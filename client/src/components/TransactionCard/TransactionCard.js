@@ -6,6 +6,11 @@ function TransactionCard({_id , title , amount , category ,type , createdAt}) {
     <div className='TransactionCard'>
       <h1 className='TransactionCardTitle'>{title}</h1>
 
+      <spam>
+        
+        {new Date(createdAt).toLocaleString()}
+      </spam>
+
       <span className='TransactionCardAmount' style={{
         color: type === "credit" ? "green":"red"
       }}>
