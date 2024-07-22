@@ -21,7 +21,11 @@ function TransactionCard({_id , title , amount , category ,type , createdAt}) {
         {amount}
       </span>
 
-      
+      <button 
+      className='transaction-card-delete'
+      >
+        Delete
+      </button>
     </div>
   )
 }
