@@ -58,7 +58,33 @@ function Home() {
           Logout
         </span>
 
-        
+        <div className='netTransactionvalue'>
+          <div className='netTransactionItem'>
+              <span className='net-transaction-value-amount'>
+                + totalCreditAmount
+              </span>
+              <span className='net-transaction-value-title'>
+                Total Credit Amount
+              </span>
+          </div>
+          <div className='netTransactionItem'>
+              <span className='net-transaction-value-amount'>
+                + totalCreditAmount
+              </span>
+              <span className='net-transaction-value-title'>
+                Total Credit Amount
+              </span>
+          </div>
+          <div className='netTransactionItem'>
+              <span className='net-transaction-value-amount'>
+                + totalCreditAmount
+              </span>
+              <span className='net-transaction-value-title'>
+                Total Credit Amount
+              </span>
+          </div>          
+          
+        </div>
 
         {
           transactions.map( (transaction) => {

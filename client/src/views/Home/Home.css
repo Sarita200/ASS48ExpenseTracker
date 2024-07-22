@@ -5,3 +5,14 @@
     cursor: pointer;
     font-size: 18px;
 }
+.netTransactionvalue{
+    display: flex;
+    justify-content: space-around;
+    margin: 10px auto;
+}
+.netTransactionItem{
+    width: 250px;
+    border: 1px solid #0084ff;
+    padding: 10px;
+    border-radius: 10px;
+}
