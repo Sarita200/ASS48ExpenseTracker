@@ -10,6 +10,10 @@ function Login() {
 
   const [email , setEmail ] = useState('')
   const [password , setPassword ] = useState('')
+  const [user, setUser] = useState({
+    email:'',
+    password: ''
+  })
 
   const loginNow = async () => {
     const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/login`,{
@@ -29,6 +33,10 @@ function Login() {
      }
     else{
       toast.error(response.data.message)
+      setUser({
+          email: '',
+          password: '',  
+      })
     }
 
     console.log(response.data)

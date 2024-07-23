@@ -91,7 +91,6 @@ function AddTransaction() {
                     Add
                 </button>                
             </form>
-            <Link to='/'className='switchAccount'>Back</Link>
             <Toaster/>
         </div>
     )
