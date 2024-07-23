@@ -14,7 +14,8 @@ function TransactionCard({_id , title , amount , category ,type , createdAt , lo
     loadTransactions()
   }
   return (
-    <div className='TransactionCard'>
+    <div className='Transaction-card'>
+    
       <h1 className='TransactionCardTitle'>{title}</h1>
 
       <span  className="TransactionCardDate">
@@ -40,6 +41,7 @@ function TransactionCard({_id , title , amount , category ,type , createdAt , lo
       </button>
      
      <Toaster/>
+
     </div>
   )
 }

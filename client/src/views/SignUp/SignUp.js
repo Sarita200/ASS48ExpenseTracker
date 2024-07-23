@@ -48,7 +48,7 @@ function SignUp() {
     <div>
       <h1 className='title'> User Registration</h1>
 
-      <form className='signUpForm'>
+      <form className='FormContainer'>
         <input
           type='text'
           placeholder='Full Name'
@@ -88,9 +88,8 @@ function SignUp() {
         >
           Register
         </button>
-
-        <Link to='/login'>Already have an account ? Login</Link>
       </form>
+      <Link to='/login'className='switchAccount'>Already have an account ? Login</Link>
       <Toaster />
     </div>
   )

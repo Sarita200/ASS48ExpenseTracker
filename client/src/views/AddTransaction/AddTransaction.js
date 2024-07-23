@@ -3,6 +3,7 @@ import './AddTransaction.css'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { Toaster } from 'react-hot-toast'
+import { Link } from 'react-router-dom'
 
 function AddTransaction() {
     const [user , setUser ] = useState('')
@@ -39,9 +40,9 @@ function AddTransaction() {
     
     return (
         <div>
-            <h1>Add Transactions For {user.fullName}</h1>
+            <h1 className='title'>Add Transactions For {user.fullName}</h1>
 
-            <form className='signUpForm'>
+            <form className='FormContainer'>
                 <input
                     type='text'
                     required
@@ -87,9 +88,10 @@ function AddTransaction() {
                 className='btnAuth'
                 onClick={AddTransaction}
                 >
-                    Add Transaction
-                </button>
+                    Add
+                </button>                
             </form>
+            <Link to='/'className='switchAccount'>Back</Link>
             <Toaster/>
         </div>
     )

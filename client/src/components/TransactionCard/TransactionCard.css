@@ -1,21 +1,20 @@
-.TransactionCard{
+.Transaction-card{
     border: 1px solid #f0f0f0;
     margin: 10px 40px;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 0 10px #f0f0f0;
-    position: relative
+    position: relative;
 }
 .TransactionCardTitle{
     margin: 0 ;
 }
 .TransactionCardDate{
-    font-size: 10px;
+    font-size: 15px;
 }
 .TransactionCardCategory{
-    font-size: 12px;
-    background-color: #0084ff;
-    color: #ffff;
+    font-size: 20px;
+    font-weight: bold;
     position: absolute;
     right: 15px;
     bottom: 15px;
@@ -25,18 +24,17 @@
 }
 .TransactionCardAmount{
     position: absolute;
-    right: 10px;
-    top: 10px;
-    font-size: 20px;
-    color: ;
+    right: 25px;
+    top: 25px;
+    font-size: 30px;
 }
 .transaction-card-delete{
     background-color: black;
     color: white;
     border: none;
-    font-size: 8px;
+    font-size: 10px;
     border-radius: 10px;
-    padding: 2px 10px;
+    padding: 5px 10px;
    margin: 30px;
    cursor: pointer;
 }

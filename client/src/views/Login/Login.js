@@ -35,10 +35,10 @@ function Login() {
   }
 
   return (
-    <div>
+    <div >
         <h1 className='title'> User Login</h1>
 
-        <form className='signUpForm'>
+        <form className='FormContainer'>
 
         <input
           type='email'
@@ -62,10 +62,9 @@ function Login() {
         >
           Login 
           </button>
-
-          <Link to='/signup'> Don't have an account ? Register</Link>
           
       </form>
+      <Link to='/signup' className='switchAccount'> Don't have an account ? Register</Link>
 
       <Toaster/>
     </div>
