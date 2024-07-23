@@ -27,7 +27,16 @@ function SignUp() {
 
     if (response.data.success) {
       toast.success(response.data.message)
-    }
+
+      setUser({
+        fullName: '',
+          email: '',
+          password: '',
+          dob: ''
+    
+      })
+    }      
+      
     else {
       toast.success(response.data.message)
     }
