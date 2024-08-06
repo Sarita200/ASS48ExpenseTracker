@@ -5,9 +5,6 @@ import toast from "react-hot-toast"
 import { Toaster } from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 
-
-
-
 function SignUp() {
 
   const [user, setUser] = useState({
@@ -30,15 +27,15 @@ function SignUp() {
 
       setUser({
         fullName: '',
-          email: '',
-          password: '',
-          dob: ''
-    
+        email: '',
+        password: '',
+        dob: ''
+
       })
-    }      
-      
+    }
+
     else {
-      toast.success(response.data.message)
+      toast.error(response.data.message)
     }
     console.log(response)
 
@@ -89,7 +86,7 @@ function SignUp() {
           Register
         </button>
       </form>
-      <Link to='/login'className='switchAccount'>Already have an account ? Login</Link>
+      <Link to='/login' className='switchAccount'>Already have an account ? Login</Link>
       <Toaster />
     </div>
   )
